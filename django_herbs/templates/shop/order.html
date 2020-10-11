@@ -1,0 +1,64 @@
+
+{% extends 'Base.html' %}
+
+{% block title %}Корзина{% endblock %}
+
+
+{% block content %}
+{% load mathfilters %}
+    
+<h3>Оформите заказ</h3>
+
+                        <table class="basket_table">
+                            <thead>
+                                <tr>
+									<th>Картинка</th>
+                                    <th>Название товара</th>
+                                    <th>Количество</th>
+                                    <th>Цена за ед.</th>
+                                    <th>Общая цена</th>
+									<th>х</th>
+                                </tr>
+                            </thead>
+							
+                            <tbody>
+                                {% for cart in cart_set %}
+                                    <tr>
+										<td><img src ="{{cart.product.image_product.image.url}}" data-sizes="auto" alt="om_image"></td>
+                                        <td>{{ cart.product }}</td>
+                                        <td>{{ cart.number }}шт.</td>
+                                        <td><span class="product-price">
+                                             {{ cart.product.price_product }}руб.</span></td>
+                                        <td>
+                                            {{cart.product.price_product|mul:cart.number}} руб.
+                                        </td>
+										<td>
+                                             х
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+							
+                        </table>
+
+                        
+
+                        <hr>
+						<div>
+                        <b>Сумма заказа:{{summa}} руб. </b> 
+						</div>
+		 <hr>
+    <h3>Заполните все поля, пожалуйста</h3>
+<form action="" method="POST">
+{% csrf_token %}
+{{order_form.as_p}}
+			<hr>
+                        <div class="www">
+                            <button type="submit" class="btn_form">Заказать</button>
+                        </div>
+</form>
+
+                
+             
+          
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+
+{% block title %}Магазин{% endblock %}
+
+{% block content %}
+
+<div class ="conteiner-fluid" id= "name_content"><h1 id= 'cont'>Выбери то, что ты хочешь</h1></div>
+	<div class = 'product_carts'>
+	{% for image in image_list %}
+		<div class= 'product_cart'>
+			<div > {{image.product}}  </div>
+			<div > <a href = "{{image.product.id}}">       <img  src= "{{image.image.url}} " class= "image_in_cart" >    </a> </div>
+			
+		</div>
+	{% endfor %}
+		
+	</div>
+{% endblock %}

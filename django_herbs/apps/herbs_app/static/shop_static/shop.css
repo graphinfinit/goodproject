@@ -1,0 +1,177 @@
+@media screen and (max-width: 700px) {
+	 .top_shop {
+		flex-direction: column; 
+		 
+		 
+	 } 
+
+}
+
+
+.product_carts {
+	display: flex;
+	flex-wrap:wrap ;
+	/*justify-content: space-between;*/
+	
+}
+.product_cart {
+	border: 17px solid white;
+	padding: 15px;
+	
+	
+}
+.image_in_cart {
+	
+   /* здесь стиль подгружаемой картинки */
+	
+	
+}
+
+
+
+
+
+.top_shop {
+	
+	margin-top: 66px;
+	display: flex;
+	
+	justify-content:space-around;
+	
+	
+	
+}
+
+
+
+
+
+
+
+.product_image {
+	border: 17px solid #CFF5FE;
+	
+	
+	
+	
+}
+.right_top {
+	
+	
+	margin: 50px;
+	
+		
+	
+}
+
+.form_x {
+	margin-top:20px
+	
+	
+	
+}
+
+.btn_form {
+  width:38%;	
+  position: relative;
+  display: inline-block;
+  font-family: Vinque_Rg,sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: rgb(245,245,245);
+  
+  text-decoration: none;
+  outline: none;
+  border: none;
+  
+  background: black ;
+  
+  -webkit-animation: pulsate 4s linear infinite;
+  animation: pulsate 4s linear infinite;
+}
+btn_form:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  cursor: pointer;
+  
+}
+
+
+
+@-webkit-keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+@keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+
+
+
+	
+
+.basket_items {
+	margin-top:2px;
+	width:100%;
+	background-color:white;
+	z-index: 2;
+	
+	
+}
+.nonvisibility {
+	visibility:hidden;
+	
+	
+}
+
+
+
+
+
+
+
+@font-face {
+ 
+font-family: "Vinque_Rg"; 
+src: url("fonts/18365.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+} 
+
+
+
+ /* basket таблица */
+ 
+
+
+.basket_table {
+ 
+  font-size: 14px;
+  
+  max-width: 70%;
+  width: 70%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.basket_table th {
+  font-weight: normal;
+  color: #111730;
+  border-bottom: 2px solid #6678b1;
+  padding: 10px 8px;
+}
+.basket_table td {
+  color: #111730;
+  padding: 9px 8px;
+  transition: .3s linear;
+}
+.basket_table tr:hover td {color: #6699ff;}
+
+
+
+
+.form_group {
+	width:33%;
+	
+	border-right-color:#333333 ;
+	
+	
+}

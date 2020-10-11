@@ -1,0 +1,54 @@
+{% extends 'Base.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block content %}
+
+<h1>Ваши заказы</h1>
+
+<table class="basket_table">
+                            <thead>
+                                <tr>
+									<th>Пользователь</th>
+                                    <th>Телефон</th>
+                                    <th>Email</th>
+                                    <th>Адрес</th>
+                                    <th>Дата оформления</th>
+                                    <th>Статус заказа</th>
+									<th>х</th>
+                                    <th>+$</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for order in orders%}
+                                    <tr>
+										<td>{{order.name}}</td>
+                                        <td>{{order.phone}}</td>
+                                        <td>{{order.email}}</td>
+                                        <td>{{order.adress_dostavka}}</td>
+                                        <td>{{order.created}}</td>
+                                        <td>{{order.status}}</td>
+										<td>
+                                            <form action = '' method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="order_id" value="{{order.id}}">
+                                                <button type="submit"  >Удалить</button>
+                                            </form>
+
+                                        </td>
+                                        <td>
+                                            <form action = '#' method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="order_id" value="{{order.id}}">
+                                                <button type="submit"  >Оплатить онлайн</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+
+
+
+{% endblock %}

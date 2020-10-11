@@ -1,0 +1,340 @@
+
+/* css файл для base.html */
+
+
+
+/* Здесь будет адаптивность */
+@media screen and (max-width: 700px) {
+	 .main_menu {
+		flex-direction: column; 
+		 
+		 
+	 } 
+
+}
+
+
+
+a {
+	text-decoration: none;
+	color:#50848F;
+}
+
+html, body {
+margin:0;
+padding:0;
+} 
+
+
+body {
+	background-color:#F3E8FF;
+	font-family: "Vinque_Rg";
+	
+}
+
+.header {
+	display: flex;
+	
+	background-image: url('_1235-315.jpg');
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom:13px;
+	
+	
+}
+
+
+.logo img{
+		padding-top: 15px;
+		padding-left: 15px;
+		width: 90px;
+		height: 80px;
+}
+
+
+
+
+
+
+.main_menu {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;	
+}
+.element_menu {
+	margin: 0 0 3px 0;
+	list-style: none;
+	text-align: center;
+	height: 17px;
+	padding: 3px;
+}
+.element_menu a {
+	
+	text-decoration: none;
+	font-size: 26px;
+	color: #18172F;
+	cursor: pointer;
+	font-family: "Vinque_Rg";
+}	
+.element_menu a:hover {
+    transition: all 0.5s ease;
+    
+	color: #FFD243;
+	border-radius: 3px
+}
+
+
+
+
+.basket_visible {
+	text-decoration: none;
+	font-size: 23px;
+	color: #18172F;
+	cursor: pointer;
+	font-family: "Vinque_Rg";
+	
+}
+
+.basket_visible:hover {
+    transition: all 0.5s ease;
+    background-color: #171626;
+	/*color: white;*/
+	
+}
+
+
+
+
+
+/* Подменю */
+.mainmenubtn {
+    
+	background-color: none;
+    color: #18172F;
+    border: none;
+    cursor: pointer;
+}
+.mainmenubtn:hover {
+	transition: all 4s ease;
+	color: black;	
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+	z-index: 2;
+}
+.dropdown-child {
+    display: none;
+    background-color: #171626;
+    min-width: 2px;
+	padding: none
+}
+.dropdown-child a {
+    color: #171626;
+    padding-top: 12px;
+    text-decoration: none;
+    display: block;
+	font-size: 20px;
+}
+.dropdown:hover .dropdown-child {
+    display: block;
+	background-color: white;
+}
+
+
+
+
+
+
+
+
+
+/* регистрация и вход*/
+
+.Out {
+	padding-left: 20px;
+	padding-right: 20px;
+	
+}	
+.Out a {
+	color: #171626;
+	font-size: 21px;
+	text-decoration: none;
+	padding: 5px;
+}	
+.Out a:hover {
+	transition: all 4s ease;
+	background-color: black;
+	color: white;
+	border-radius: 12px
+}
+
+
+
+
+
+
+
+	
+.datetimenow {
+	color: white;
+	
+}	
+		
+#name_aricles_top {
+	background-color:black;
+	opacity: .8;
+	width:70%;
+	color: floralwhite; /* Цвет текста */
+    font-weight: bold; /* Жирное начертание */
+	
+}
+#article_name {
+	color: #171626;
+}
+
+
+#conterd {
+	color: #030215;	
+}
+
+
+
+.change_block {
+	padding-top:30px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:100px;
+	min-height:666px;
+	/*border:solid #333333;*/
+	
+	margin-left:130px;
+	margin-right:130px;
+	background-color:#F3E8FF;
+}
+
+.pagination {
+	padding-left:20px;
+	
+	
+}
+
+.change_block img {
+	width: 400px;
+	height: 300px;
+	float:right;
+	opacity: .8;
+	
+}
+
+
+
+
+#herb_text_date {
+	padding-bottom: 49px;
+	
+	
+}
+
+.comment_form {
+	padding-top: 40px;
+	
+
+
+
+}
+.comment_block {
+	margin-top:5px;
+	color: #654B50;
+	padding: 5px;
+	
+	background-color: white;
+	width: 73%;
+}
+#author_name {
+	color:#568690;
+}
+
+
+
+
+
+
+.basket_items {
+	max-width: 150px;
+	z-index: 2;
+	
+}
+
+#gogo {
+max-width:170px;
+	
+	
+	
+}
+
+#gogo ul{
+	max-width: 170px;
+	font-size: 13px;
+	
+	
+	
+	
+}
+
+
+.delete_item {
+	font-size: 4px;
+	
+	
+	
+}
+
+#basket_total_nmb {
+	font-size: 19px;
+	
+	
+	
+}
+
+.basket_items ul{
+	
+	text-align:left;
+	
+	
+}
+
+#Go_to_basket {
+	font-size: 13px;
+	color: white;
+	
+	
+}
+
+
+@font-face {
+ 
+font-family: "Vinque_Rg"; 
+src: url("fonts/18365.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+
+#article_name a {
+color:#111730;
+}
+
+#article_name a:hover {
+color:#D6C1D0;
+}	
+
+#footer {
+	
+    background: #2F4D53; /* Цвет фона подвала */
+    color: white; /* Цвет текста */
+    padding: 5px; /* Отступы вокруг текста */
+    clear: left; /* Отменяем действие float */
+	height:61px;
+   }	

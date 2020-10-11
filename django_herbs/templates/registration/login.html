@@ -1,0 +1,39 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+  <p>Ваше имя или пароль не существуют</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Ваша учетная запись не имеет доступа к этой странице. Чтобы продолжить, пожалуйста, войдите в систему с учетной записью, которая имеет доступ.</p>
+  {% else %}
+    <p>Вы AnonymousUser и у вас недостаточно разрешений. Войдите в систему.</p>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+
+<tr>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</tr>
+
+<tr>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" class="btn_form" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Забыли пароль? ^-^ </a></p>
+
+{% endblock %}

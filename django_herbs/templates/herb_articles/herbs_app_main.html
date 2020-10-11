@@ -1,0 +1,37 @@
+{% extends 'Base.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block content %}
+
+<div id= "name_aricles_top" ><h1 id= 'cont'>Все статьи</h1></div>
+	<ul>
+
+	{% for herb in herb_list %}
+	 <li>
+		<div id = "article_name"> <h3><a href= "items/{{herb.id}}">{{herb.herb_name}}</a></h3> </div>
+		<span>Дата публикации: {{herb.date_updatese}}</span> Автор:{{herb.author}}
+	 </li>
+	{% endfor %}
+
+	</ul>
+
+	<div class="pagination">
+    <span class="step-links">
+        {% if herb_list.has_previous %}
+            <a href="?page={{ herb_list.previous_page_number }}">предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ herb_list.number }} из {{ herb_list.paginator.num_pages }}.
+        </span>
+
+        {% if herb_list.has_next %}
+            <a href="?page={{ herb_list.next_page_number }}">следующая</a>
+        {% endif %}
+    </span>
+</div>
+
+	
+	
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "Base.html" %}
+
+{% block title %}Автор{% endblock %}
+{% block name_content %}<div id= "name_aricles_top" ><h1 id= 'cont'>Напишите статью</h1></div>{% endblock %}
+
+{% block content %}
+
+<form action = ""  method = "post" >
+{% csrf_token %}
+<table>
+{{herb_articleform}}
+</table>
+<input type = "submit" value = "Отправить" / >
+
+</form >
+
+{% endblock %}

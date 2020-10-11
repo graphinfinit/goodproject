@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+
+
+{% block title %}Статьи{% endblock %}
+
+
+
+{% block content %}
+
+<div id= "name_aricles_top" ><h1 id= 'cont'>Новые статьи</h1></div>
+	
+	<div class= "content_image">
+	
+	</div>
+	{% for article in latest_articles_list %}
+	
+		<div id = "article_name"> <h2>{{article.herb_name}}</h2> </div>
+		<div id="conterd"> {{article.date_updatese}} </div>
+			
+			
+		<div id="conterd"> {{article.herb_text|truncatechars:100}} </div>
+		<a href= "../items/{{article.id}}">Читать</a>	
+		
+	{% endfor %}
+{% endblock %}

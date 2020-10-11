@@ -1,0 +1,38 @@
+{% extends 'Base.html' %}
+
+{% block title %}Статьи{% endblock %}
+
+{% block content %}
+
+<div class ="conteiner-fluid" id= "name_content"><h1 id= 'cont'>Статья целиком</h1></div>
+	<div class= "content_image"></div>
+	
+		<div id = "article_name"> <h2>{{article_id.herb_name}}</h2> </div>
+		
+			
+			
+		<div id="herb_text"> <p>{{article_id.herb_text|linebreaks}}</p> </div>
+		<div id="herb_text_date"> {{article_id.date_updatese}} </div>
+		
+		{% for comment in comments %}
+			<div class= "comment_block">
+				<div id = 'author_name'> <p>Автор: {{comment.author_name}} Дата: {{comment.date_updatese}}</p> </div>
+				<div>{{comment.comment_text}} </div>
+			</div>
+			
+		{% endfor %}
+		
+		
+		
+	<form name="comment_user" method="post" action="/herbs_app/items/{{article_id.id}}/leave_comment" class= "comment_form">
+	{% csrf_token %}
+		<p>Комментарий<Br>
+		<input name = "user_named" type="text" value="{{request.user}}" READONLY><br>
+		<textarea name="comment" cols="40" rows="3"></textarea></p>
+	
+		<p><input type="submit" value="Отправить">
+		<input type="reset" value="Очистить"></p>
+	</form>
+		
+	
+{% endblock %}
