@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'herbs_app.apps.HerbsAppConfig',
     'shop.apps.ShopConfig',
     'users_app.apps.UsersAppConfig',
-      'mathfilters',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
@@ -124,8 +124,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 
 STATIC_URL = '/static/'
@@ -133,9 +131,24 @@ STATIC_URL = '/static/'
 STATIC_DIRS = (os.path.join(BASE_DIR, "static"),
 )
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/herbs_app'
+
+
+# Setting smtp
+# запуск локального сервера - python -m smtpd -n -c DebuggingServer localhost:25
+
+EMAIL_HOST = '127.0.0.1'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+
+#EMAIL_HOST_USER = 'your_account@dfmail.com'
+#EMAIL_HOST_PASSWORD = 'your_password'
+
+
