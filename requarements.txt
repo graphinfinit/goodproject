@@ -1,1 +1,8 @@
 django-mathfilters==1.0.0
+
+Python==3.8.3
+
+celery == 5.0.0 (linux)
+redis==3.5.3
+
+

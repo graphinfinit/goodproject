@@ -1,0 +1,28 @@
+{% extends 'Base.html' %}
+
+{% block title %}Личная страница{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h3>Общие настройки</h3>
+<ul>
+    <li>Имя пользователя:{{user}}</li>
+    <li>Почтовый адресс: {{user.email}}</li>
+    <li>Создан:{{user.date_joined}}</li>
+    <li>Активность:{{user.last_login}}</li>
+</ul>
+
+ -- Удалить пользователя --
+
+<h3>Расширения профиля</h3>
+расширение модели USER
+
+{% else %}
+
+<h1>У ВАС НЕТ ЛИЧНОГО КАБИНЕТА, УХОДИТЕ</h1>
+{% endif %}
+
+{% endblock %}
+

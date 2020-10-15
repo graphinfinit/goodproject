@@ -141,14 +141,61 @@ LOGIN_REDIRECT_URL = '/herbs_app'
 
 
 # Setting smtp
-# запуск локального сервера - python -m smtpd -n -c DebuggingServer localhost:25
+# запуск локального сервера - python -m smtpd -n -c DebuggingServer 127.0.0.1:25
 
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 
+
+#аутентификация в smtp-сервере  (gmail ymail)
 #EMAIL_HOST_USER = 'your_account@dfmail.com'
 #EMAIL_HOST_PASSWORD = 'your_password'
+
+
+
+# Celery settings
+REDIS_HOST = "127.0.0.1"
+REDIS_PORT = "6379"
+CELERY_BROKER_URL = "redis://" + REDIS_HOST +":"+ REDIS_PORT + "/0"
+CELERY_RESULT_BACKEND = "redis://" + REDIS_HOST +":"+ REDIS_PORT + "/0"
+
+
+# Доп.настройки
+#CELERY_TRANSPORT_OPTIONS = ""
+#CELERY_ACCEPT_CONTENT = {"applications/json"}
+#CELERY_TASK_SERIALISER ="json"
+#CELERY_RESULT_SERIALISER = "json"
+
+
+
+
+'''
+
+Если использовать django-redis. 
+redis как key:value кэш хранилище 
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+'''
+
+
+
+
+
+
+
+
+
+
 
 

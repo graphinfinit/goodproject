@@ -52,12 +52,14 @@
 	<div class= "Out">
 	{% if user.is_authenticated %}
 
-
+	<p><a href="/users_q/edit_profile">Профиль</a></p>
 	<p><a href="{% url 'logout'%}?next=/herbs_app/about">Выход</a></p>
+
 	{% else %}
-     <a href="{% url 'login'%}?next=/herbs_app/about">Вход</a>  
+     <a href="{% url 'login'%}?next=/herbs_app/about">Вход</a>
+		<p><a href = '/users_q/$'>Регистрация</a></p>
     {% endif %} 
-	<p><a href = '/users_q/$'>Регистрация</a></p>
+
 
 
 

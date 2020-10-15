@@ -8,6 +8,9 @@ from django.dispatch import receiver
 '''Определим метод postsave чтобы при создании пользователя он был неактивным'''
 @receiver(post_save, sender=User)
 def default_to_non_active(sender, instance, created, **kwargs):
-    if created:
-        instance.is_active = False
-        instance.save()
+    if not sender.is_superuser:
+        if created:
+            instance.is_active = False
+            instance.save()
+    else:
+        pass

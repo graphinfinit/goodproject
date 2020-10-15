@@ -7,31 +7,33 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import FormView
 
 
-from django.core.mail import send_mail
-
-
 from django.conf import settings
 
 from . import signals
 
 
+from .tasks import send_asyncio
 
 
 
 
-"""
-python -m smtpd -n -c DebuggingServer localhost:1025
-       
-def activate_user(request):
-    username = request.POST['username']
-    user = authenticate(request, username=username, password=password)
+
+
+'''
+def activate_user(request, id):
+    user_object = get_user(id)
 
     if user is not None:
         login(request, user)
         
     else:
         pass
-    """
+
+'''
+
+
+
+
 
 class UserCreationForm(UserCreationForm):
 
@@ -48,8 +50,6 @@ class UserCreationForm(UserCreationForm):
             user.save()
         return user
 
-
-
 class MyRegisterFormView(FormView):
     form_class = UserCreationForm
     success_url = "/users_q/success"
@@ -57,19 +57,13 @@ class MyRegisterFormView(FormView):
     template_name = "register.html"
 
     def form_valid(self, form):
-        """Отправляет email и сохраняет пользователя неактивным (signals/postsave)"""
+        """Отправляет email (celery) и сохраняет пользователя неактивным (signals/postsave)"""
 
         form.save()
 
-        subject = "NAME"
-        message_link = "LINK"
-        num_letter = send_mail(
-            'Hello,'.format(subject),
-            'Follow the link for registration {}'.format(message_link),
-            'from@example.com',
-            ['to@example.com'],
-            fail_silently=False,
-        )
+        # см. tasks.py
+        send_asyncio.delay()
+
 
         return super(MyRegisterFormView, self).form_valid(form)
 
@@ -79,3 +73,11 @@ class MyRegisterFormView(FormView):
 
 def good_scum(request):
     return render(request,'registration/success_reg.html')
+
+
+def edit_profile(request):
+    return render(request, 'profile/edit_profile.html')
+
+
+
+
