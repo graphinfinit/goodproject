@@ -1,7 +1,6 @@
 # djangoherbs
 
 
-
 Celery : celery -A django_herbs worker -l INFO
 
 redis :тест на win64 https://github.com/microsoftarchive/redis/releases/tag/win-3.2.100 и запустить сервер

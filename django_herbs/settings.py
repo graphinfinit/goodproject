@@ -27,6 +27,9 @@ SECRET_KEY = 'b7k(bh+)ulfc_4n0tu_xesn21^p@mxuf8ih115rx11x&7p*h1i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+DOMEN = "127.0.0.1:8000"
+
 ALLOWED_HOSTS = []
 
 
@@ -143,15 +146,17 @@ LOGIN_REDIRECT_URL = '/herbs_app'
 # Setting smtp
 # запуск локального сервера - python -m smtpd -n -c DebuggingServer 127.0.0.1:25
 
-EMAIL_HOST = '127.0.0.1'
-EMAIL_PORT = 25
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+#EMAIL_USE_SSL = True
 
 
 #аутентификация в smtp-сервере  (gmail ymail)
-#EMAIL_HOST_USER = 'your_account@dfmail.com'
-#EMAIL_HOST_PASSWORD = 'your_password'
+
+EMAIL_HOST_USER = 'graphinfinit@gmail.com'
+EMAIL_HOST_PASSWORD = 'gfhjkm3628800'
 
 
 
