@@ -1,0 +1,26 @@
+{% extends 'Base.html' %}
+
+
+{% block title %}Поиск{% endblock %}
+
+
+
+{% block content %}
+
+<div id= "name_aricles_top" ><h1 id= 'cont'>Поиск статей</h1></div>
+
+	<div class= "content_image">
+
+	</div>
+<h3>Введите название статьи</h3>
+<form method="post" action="">
+    {% csrf_token %}
+    <input name = "title" type="text" value="Название статьи">
+    <br>
+    <hr>
+    <input type="submit" value="поиск" class="btn_form">
+</form>
+
+
+
+{% endblock %}

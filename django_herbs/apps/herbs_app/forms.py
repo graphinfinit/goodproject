@@ -5,3 +5,4 @@ class Herb_articleForm(ModelForm):
     class Meta:
         model = Herb_article
         fields = ('herb_name', 'herb_text')
+

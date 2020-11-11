@@ -72,7 +72,9 @@
 }
 
 .btn_form {
-  width:38%;	
+  width:38%;
+  min-width:200px;
+
   position: relative;
   display: inline-block;
   font-family: Vinque_Rg,sans-serif;

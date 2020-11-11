@@ -15,6 +15,7 @@
                                     <th>Адрес</th>
                                     <th>Дата оформления</th>
                                     <th>Статус заказа</th>
+                                    <th>Сумма</th>
 									<th>х</th>
                                     <th>+$</th>
                                 </tr>
@@ -29,19 +30,22 @@
                                         <td>{{order.adress_dostavka}}</td>
                                         <td>{{order.created}}</td>
                                         <td>{{order.status}}</td>
+                                        <td>{{order.order_price}}руб.</td>
 										<td>
-                                            <form action = '' method="POST">
+                                            <form action = '' method="POST" name="del" id="del">
                                                 {% csrf_token %}
-                                                <input type="hidden" name="order_id" value="{{order.id}}">
+                                                <input type="hidden" name="order_id" value="{{order.id}}"  form = 'del' >
                                                 <button type="submit"  >Удалить</button>
                                             </form>
 
                                         </td>
                                         <td>
-                                            <form action = '#' method="POST">
+                                            <form action = '' method="POST" id="pay">
                                                 {% csrf_token %}
-                                                <input type="hidden" name="order_id" value="{{order.id}}">
-                                                <button type="submit"  >Оплатить онлайн</button>
+                                                <input type="hidden" name="order_id" value="pay_{{order.id}}" form="pay">
+
+                                                <button type="submit">Оплатить онлайн</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 {% endfor %}

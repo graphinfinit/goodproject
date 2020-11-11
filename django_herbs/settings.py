@@ -149,15 +149,12 @@ LOGIN_REDIRECT_URL = '/herbs_app'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
 #EMAIL_USE_SSL = True
 
 
 #аутентификация в smtp-сервере  (gmail ymail)
-
 EMAIL_HOST_USER = 'graphinfinit@gmail.com'
 EMAIL_HOST_PASSWORD = 'gfhjkm3628800'
-
 
 
 # Celery settings
@@ -165,7 +162,6 @@ REDIS_HOST = "127.0.0.1"
 REDIS_PORT = "6379"
 CELERY_BROKER_URL = "redis://" + REDIS_HOST +":"+ REDIS_PORT + "/0"
 CELERY_RESULT_BACKEND = "redis://" + REDIS_HOST +":"+ REDIS_PORT + "/0"
-
 
 # Доп.настройки
 #CELERY_TRANSPORT_OPTIONS = ""
@@ -176,11 +172,17 @@ CELERY_RESULT_BACKEND = "redis://" + REDIS_HOST +":"+ REDIS_PORT + "/0"
 
 
 
-'''
 
+
+
+
+
+
+
+
+'''
 Если использовать django-redis. 
 redis как key:value кэш хранилище 
-
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -190,7 +192,6 @@ CACHES = {
         }
     }
 }
-
 '''
 
 

@@ -1,6 +1,9 @@
 from django.db import models
 
 from django.contrib.auth.models import User
+
+
+
 # Create your models here.
 
 class Shop_product(models.Model):
@@ -48,13 +51,24 @@ class Order(models.Model):
     comment = models.TextField('Комментарий')
     adress_dostavka = models.CharField('Адрес доставки', max_length = 128)
     status = models.ForeignKey(Status, on_delete= models.CASCADE, default = None)
-    
+    order_price = models.PositiveIntegerField('Сумма заказа', default = 1)
+
     def __str__(self):
         return '%s' % (self.id) # id заказа
     
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
+
+    def save(self,*args,**kwargs):
+        products = Product_in_Basket.objects.filter(basket = self.id)
+        order_price = 0
+        for product in products:
+            order_price += product.total_price
+            print(order_price)
+        self.order_price = order_price
+        super(Order, self).save(*args, **kwargs)
   
   
 class Product_in_Basket(models.Model):
@@ -79,7 +93,7 @@ class Product_in_Basket(models.Model):
         self.price_product = price_product
         self.total_price = self.number * price_product
         
-        super(Product_in_Basket, self).save(*args,**kwargs)
+        super(Product_in_Basket, self).save(*args, **kwargs)
  
  
 

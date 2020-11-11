@@ -26,12 +26,14 @@
 
 		<form action = ""  method = "post" >
 			{% csrf_token %}
-			<table>
+
 			{{cartform}}
-			</table>
-			<input type="submit" id="submit_btn" value="Add to cart" class="btn_form" >
-							В корзину</input>
+
+			 <hr>
+			<input type="submit" id="submit_btn" value = 'Добавить'  class="btn_form" >
+
 		</form >
+
 	</div>
 
 	

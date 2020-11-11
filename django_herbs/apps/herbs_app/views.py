@@ -57,6 +57,24 @@ def herb_id_info(request,herb_id):
     data = {'article_id': article_id, 'comments': comments}
     return render(request,'herb_articles/herb_id_info.html', context = data)
 
+
+def search_title(request):
+    if request.method == 'POST':
+        # Простой встроенный поиск
+        print(request)
+        title = request.POST["title"]
+        result_search = Herb_article.objects.filter(herb_name__contains=title) # содержит title
+
+
+        return render(request, 'herb_articles/result_search.html' , context = {'result_search': result_search})
+    else:
+        return render(request, 'herb_articles/search.html')
+
+
+
+
+
+
 @login_required
 def leave_aricle(request):
 
