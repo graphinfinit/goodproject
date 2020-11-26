@@ -11,7 +11,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_herbs.settings')
 
 app = Celery('django_herbs')
 
-app.config_from_object('django.conf:settings', namespace = "CELERY")
+app.config_from_object('django.conf:settings', namespace="CELERY")
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 

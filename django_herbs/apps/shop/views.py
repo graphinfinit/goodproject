@@ -51,10 +51,11 @@ def shop_product_id(request, product_id):
         if not session_key:
             request.session.cycle_key()
 
-        cartform = CartForm({"session_key":session_key,"product": product_set})
+        cartform = CartForm({"session_key": session_key, "product": product_set})
 
         return render(request, 'shop/shop_product.html', context={'product_set': product_set,
-                                                                   'cartform': cartform, "image": image})
+                                                                  'cartform': cartform,
+                                                                  'image': image})
 
 
 @login_required
@@ -69,11 +70,9 @@ def add_order(request):
     :return:
     '''
 
-
     if request.method == "POST":
         order_form = OrderForm(data=request.POST)
         if order_form.is_valid():
-            print(order_form)
             order = order_form.save(commit=False)
             order.name = request.user
             order.status = Status.objects.get(id = 1)# СтатусP:Оформлен
@@ -89,7 +88,7 @@ def add_order(request):
                 )
             cart_set.delete()
 
-            order.save() # для обновлния поля общей суммы в методе save
+            order.save()  # для обновлния поля общей суммы в методе save
 
             return redirect(show_orders)
         else:
@@ -101,10 +100,9 @@ def add_order(request):
         if lock == 0:
             return render(request,'shop/null_cart_error.html')
         else:
-            shop_product = Shop_product.objects.all()
             order_form = OrderForm()
-            return render(request, 'shop/order.html', context={'order_form': order_form, 'cart_set': cart_set,
-                                                               'shop_product':shop_product})
+            return render(request, 'shop/order.html', context={'order_form': order_form,
+                                                               'cart_set': cart_set})
 
 @login_required
 def show_orders(request):
@@ -131,10 +129,6 @@ def show_orders(request):
 
     else:
         orders = Order.objects.filter(name=request.user)
-
-
-
-
         return render(request, 'shop/checkout.html', context={'orders': orders})
 
 # Оплата заказа class PayOrder()

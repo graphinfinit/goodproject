@@ -134,7 +134,6 @@ STATIC_URL = '/static/'
 STATIC_DIRS = (os.path.join(BASE_DIR, "static"),
 )
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -145,6 +144,9 @@ LOGIN_REDIRECT_URL = '/herbs_app'
 
 # Setting smtp
 # запуск локального сервера - python -m smtpd -n -c DebuggingServer 127.0.0.1:25
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

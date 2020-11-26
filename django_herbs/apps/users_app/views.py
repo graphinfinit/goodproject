@@ -1,9 +1,15 @@
 from django.contrib.auth.models import User
 
+from django_herbs.settings import DOMEN
+
 
 from django.shortcuts import render, HttpResponse
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+
+
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+
+
 from django.views.generic.edit import FormView
 from django.core.exceptions import ValidationError
 
@@ -53,33 +59,30 @@ class MyRegisterFormView(FormView):
 
     def form_valid(self, form):
         """Отправляет email (celery) и сохраняет пользователя неактивным """
-
         form.save()
-
         username = form.cleaned_data['username']
-
         from_email = 'graphinfinit@gmail.com'
         to_email = form.cleaned_data['email']
 
-
-        DOMEN = "127.0.0.1:8000"
         user_id = User.objects.get(username=username).id
-        e_user_id = encript(secret_key= secret_key, text = str(user_id))
+        e_user_id = encript(secret_key=secret_key, text=str(user_id))
         link = 'http://'+ DOMEN + "/users_q/activate_user/"+ str(e_user_id)
 
         # см. tasks.py
         send_asyncio.delay(from_email=from_email, to_email=to_email, subject=username, link=link)
-
         return super(MyRegisterFormView, self).form_valid(form)
 
     def form_invalid(self, form):
         return super(MyRegisterFormView, self).form_invalid(form)
 
 
+
+
 def good_scum(request):
     return render(request,'registration/presuccess_reg.html')
 
 def edit_profile(request):
+
     return render(request, 'profile/edit_profile.html')
 
 

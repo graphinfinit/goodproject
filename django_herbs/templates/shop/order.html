@@ -33,7 +33,7 @@
                                             {{cart.product.price_product|mul:cart.number}} руб.
                                         </td>
 										<td>
-                                             х
+                                            <a href="" name="cartproduct_id" value="{{cart.id}}">-x-</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -45,9 +45,9 @@
 
                         <hr>
 						<div>
-                        <b>Сумма заказа:{{summa}} руб. </b> 
+                        <b>___________</b>
 						</div>
-		 <hr>
+
     <h3>Заполните все поля, пожалуйста</h3>
 <form action="" method="POST">
 {% csrf_token %}

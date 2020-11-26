@@ -5,26 +5,26 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-
 class Shop_product(models.Model):
-    id_product = models.IntegerField('Код товара')
-    name_product = models.CharField('Название товара',max_length = 50)
+    id_product = models.IntegerField('Код товара', unique=True)
+    name_product = models.CharField('Название товара', max_length=50, unique=True)
     text_product = models.TextField('Описание товара')
     price_product = models.PositiveIntegerField('Цена в рублях')
     quantity_product = models.PositiveIntegerField('Количество')
    
     def __str__(self):
-        return '%s' % (self.name_product)
+        return '%s' % self.name_product
     
     class Meta:
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
+        verbose_name = 'Товар(магазин)'
+        verbose_name_plural = 'Товары(магазин)'
 
 class Image_Product(models.Model):
     product = models.OneToOneField(Shop_product, on_delete=models.CASCADE,
         primary_key=True)
-    image = models.ImageField(upload_to = 'img/')  # путь относительно папки  Media  в настройках
-    is_active = models.BooleanField(default = True)
+    image = models.ImageField(upload_to='img/')  # путь относительно папки  Media  в настройках
+    is_active = models.BooleanField(default=True)
+
     def __str__(self):
         return '%s %s' % (self.product, self.image )
     class Meta:
@@ -34,7 +34,7 @@ class Image_Product(models.Model):
 
 
 class Status(models.Model):
-    status_name = models.CharField(max_length = 10)
+    status_name = models.CharField(max_length=10)
     class Meta:
         verbose_name = 'Статус'
         verbose_name_plural = 'Статусы'    
@@ -43,7 +43,7 @@ class Status(models.Model):
 
 
 class Order(models.Model):
-    name = models.ForeignKey(User, on_delete = models.CASCADE, blank=True)
+    name = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     email = models.EmailField()
     phone = models.CharField('Номер телефона', max_length = 30)
     created = models.DateTimeField(auto_now_add = True, auto_now = False)
@@ -62,31 +62,30 @@ class Order(models.Model):
 
 
     def save(self,*args,**kwargs):
-        products = Product_in_Basket.objects.filter(basket = self.id)
+        products = Product_in_Basket.objects.filter(basket=self.id)
         order_price = 0
         for product in products:
             order_price += product.total_price
-            print(order_price)
         self.order_price = order_price
         super(Order, self).save(*args, **kwargs)
   
   
 class Product_in_Basket(models.Model):
-    basket = models.ForeignKey(Order, on_delete= models.CASCADE)
+    basket = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Shop_product, on_delete= models.CASCADE)
-    number = models.IntegerField(default = 1)
-    created = models.DateTimeField(auto_now_add = True, auto_now = False)
-    updated = models.DateTimeField(auto_now_add = False, auto_now = True)
-    price = models.PositiveIntegerField(default = 1)
-    total_price = models.PositiveIntegerField(default = 1)
+    number = models.IntegerField(default=1)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+    price = models.PositiveIntegerField(default=1)
+    total_price = models.PositiveIntegerField(default=1)
     
     
     def __str__(self):
         return '%s' % (self.basket) # id заказа
     
     class Meta:
-        verbose_name = 'Товар в корзине'
-        verbose_name_plural = 'Товар в корзине'
+        verbose_name = 'Товар в заказе'
+        verbose_name_plural = 'Товары в заказе'
     
     def save(self,*args,**kwargs):
         price_product = self.product.price_product
@@ -99,11 +98,11 @@ class Product_in_Basket(models.Model):
 
 class Cart(models.Model):
 
-    session_key = models.CharField(max_length = 128, default = None)
-    product = models.ForeignKey(Shop_product, on_delete= models.CASCADE, null = True)
-    number = models.PositiveIntegerField(default = 1, null = True)
-    created = models.DateTimeField(auto_now_add = True, auto_now = False)
-    updated = models.DateTimeField(auto_now_add = False, auto_now = True)
+    session_key = models.CharField(max_length=128, default=None)
+    product = models.ForeignKey(Shop_product, on_delete=models.CASCADE, null=True)
+    number = models.PositiveIntegerField(default=1)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 
 

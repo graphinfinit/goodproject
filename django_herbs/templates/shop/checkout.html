@@ -16,7 +16,8 @@
                                     <th>Дата оформления</th>
                                     <th>Статус заказа</th>
                                     <th>Сумма</th>
-									<th>х</th>
+                                    <th>-*-(посмотреть)</th>
+									<th>-х-</th>
                                     <th>+$</th>
                                 </tr>
                             </thead>
@@ -31,6 +32,7 @@
                                         <td>{{order.created}}</td>
                                         <td>{{order.status}}</td>
                                         <td>{{order.order_price}}руб.</td>
+                                        <td>-*-</td>
 										<td>
                                             <form action = '' method="POST" name="del" id="del">
                                                 {% csrf_token %}
