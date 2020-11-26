@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b7k(bh+)ulfc_4n0tu_xesn21^p@mxuf8ih115rx11x&7p*h1i'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -155,8 +155,8 @@ EMAIL_USE_TLS = True
 
 
 #аутентификация в smtp-сервере  (gmail ymail)
-EMAIL_HOST_USER = 'graphinfinit@gmail.com'
-EMAIL_HOST_PASSWORD = 'gfhjkm3628800'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 
 # Celery settings
